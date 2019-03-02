@@ -1,7 +1,7 @@
 ## AOP with Spring Boot
 
-My goal was to intercept method (with a specific annotation) calls in spring boot via Join Point of spring-boot. 
-Additionaly I want to be able to read the metadata of the annotation at the specific advice.
+My goal was to intercept method (with a specific annotation) calls in spring boot via Joinpoint. 
+Additionaly I want to be able to read the metadata of the annotation from an advice.
 
 You'll find a detail usage example of annotation in another personal [repository](https://github.com/bitsmuggler/java-annotation-example).
 
