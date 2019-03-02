@@ -12,4 +12,10 @@ public class HelloController {
     public String index() {
         return "Greetings from Spring Boot!";
     }
+
+    @RequestMapping("/throwException")
+    @CheckSomething
+    public String throwAnException() throws Exception {
+        throw new Exception("Hello from exception!");
+    }
 }
