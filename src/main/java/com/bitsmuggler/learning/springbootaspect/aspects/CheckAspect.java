@@ -1,8 +1,9 @@
 package com.bitsmuggler.learning.springbootaspect.aspects;
 
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -17,15 +18,16 @@ public class CheckAspect {
     System.out.println("Before execution");
   }
 
-  @After("@annotation(com.bitsmuggler.learning.springbootaspect.aspects.CheckSomething)")
-  public void checkSomethingAfter() {
-    System.out.println("Before execution");
+  @AfterReturning(pointcut = "@annotation(com.bitsmuggler.learning.springbootaspect.aspects.CheckSomething)")
+  public void checkSomethingAfter(JoinPoint joinPoint) {
+    System.out.println("After execution");
   }
 
-
   @Around("@annotation(com.bitsmuggler.learning.springbootaspect.aspects.CheckSomething)")
-  public void checkSomethingAround(ProceedingJoinPoint joinPoint) throws Throwable {
-    System.out.println("Around execution");
-    joinPoint.proceed();
+  public Object checkSomethingAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    System.out.println("Before in Around execution");
+    Object result = joinPoint.proceed();
+    System.out.println("After in arround execution");
+    return result;
   }
 }
